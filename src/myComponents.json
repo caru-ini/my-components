@@ -1,0 +1,6 @@
+{
+  "toggletheme": {
+    "name": "toggletheme",
+    "code": "'use client';\n\nimport { Button } from '@/components/ui/button';\nimport { MoonIcon, SunIcon } from 'lucide-react';\nimport { useTheme } from 'next-themes';\nimport { useEffect, useState } from 'react';\n\ninterface ToggleThemeProps {\n  variant?:\n    | 'default'\n    | 'destructive'\n    | 'outline'\n    | 'secondary'\n    | 'ghost'\n    | 'link'\n    | null\n    | undefined;\n  className?: string;\n}\n\nconst ToggleTheme = ({ variant = 'default', className }: ToggleThemeProps) => {\n  const { theme, setTheme } = useTheme();\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => setMounted(true), []);\n\n  return (\n    <Button\n      variant={variant}\n      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}\n      className={className}\n    >\n      {mounted && theme === 'dark' ? <SunIcon /> : <MoonIcon />}\n    </Button>\n  );\n};\n\nexport default ToggleTheme;\n"
+  }
+}
