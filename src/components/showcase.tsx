@@ -1,7 +1,12 @@
 'use client';
+import hljs from 'highlight.js/lib/core';
+import typescript from 'highlight.js/lib/languages/typescript';
+import 'highlight.js/styles/monokai-sublime.css';
 import { Check, Code2, Copy } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
+
+hljs.registerLanguage('typescript', typescript);
 
 interface ShowcaseProps {
   children?: JSX.Element;
@@ -12,11 +17,21 @@ interface ShowcaseProps {
 export const Showcase = ({ children, title, code }: ShowcaseProps) => {
   const [copied, setCopied] = useState(false);
   const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
+
   const onCopy = async () => {
     await navigator.clipboard.writeText(code || '');
     setCopied(true);
     setTimeout(() => setCopied(false), 5000);
   };
+
+  useEffect(() => {
+    if (isCodeModalOpen) {
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block as HTMLElement);
+      });
+    }
+  }, [isCodeModalOpen]);
+
   return (
     <div className='flex flex-col justify-center gap-2 rounded-md border border-border p-2'>
       <h2 className='px-2 text-xl font-semibold'>{title || 'Title'}</h2>
@@ -44,17 +59,35 @@ export const Showcase = ({ children, title, code }: ShowcaseProps) => {
           Code
         </Button>
       </div>
-      {/* fullscreen code modal*/}
-      {isCodeModalOpen && (
+      {isCodeModalOpen && code && (
         <div
-          className='fixed inset-0 z-50 flex items-center justify-center bg-background/60'
+          className='fixed inset-0 z-50 flex items-center justify-center bg-background/60 backdrop-blur-md'
           onClick={() => setIsCodeModalOpen(false)}
         >
-          <div className='relative flex max-h-[85svh] flex-col rounded-md border-2 border-border bg-background/70 p-4 backdrop-blur-md'>
+          <div
+            className='relative flex max-h-[85svh] flex-col rounded-md border-2 border-border bg-background/70 p-4 backdrop-blur-md'
+            onClick={(e) => e.stopPropagation()}
+          >
             <span className='absolute -top-7 text-muted-foreground'>Click outside to close</span>
-            <div className='rounded-md bg-slate-900 text-white'>
-              <pre className='overflow-auto text-wrap p-4'>
-                <code>{code || 'Code comes here'}</code>
+
+            <div className='relative rounded-md bg-slate-900 text-white'>
+              <div className='absolute right-3 top-2 flex justify-end gap-2'>
+                <Button onClick={onCopy} variant={'outline'}>
+                  {copied ? (
+                    <>
+                      <Check size={20} />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={20} />
+                      Copy
+                    </>
+                  )}
+                </Button>
+              </div>
+              <pre className='overflow-auto text-wrap'>
+                <code className='!bg-transparent'>{code}</code>
               </pre>
             </div>
           </div>
