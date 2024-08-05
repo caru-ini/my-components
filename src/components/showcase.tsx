@@ -1,12 +1,9 @@
 'use client';
-import hljs from 'highlight.js/lib/core';
-import typescript from 'highlight.js/lib/languages/typescript';
-import 'highlight.js/styles/monokai-sublime.css';
+import hljs from 'highlight.js/lib/common';
+import 'highlight.js/styles/atom-one-dark.css';
 import { Check, Code2, Copy } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
-
-hljs.registerLanguage('typescript', typescript);
 
 interface ShowcaseProps {
   children?: JSX.Element;
@@ -27,7 +24,7 @@ export const Showcase = ({ children, title, code }: ShowcaseProps) => {
   useEffect(() => {
     if (isCodeModalOpen) {
       document.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightBlock(block as HTMLElement);
+        hljs.highlightElement(block as HTMLElement);
       });
     }
   }, [isCodeModalOpen]);
@@ -37,7 +34,7 @@ export const Showcase = ({ children, title, code }: ShowcaseProps) => {
       <h2 className='px-2 text-xl font-semibold'>{title || 'Title'}</h2>
       <div className='p-3 pt-0'>
         <div className='flex h-36 w-60 items-center justify-center'>
-          {children || <p className='text-gray-500'>Component Here</p>}
+          {children ?? <p className='text-gray-500'>Component Here</p>}
         </div>
       </div>
       <div className='flex justify-between gap-2 border-t border-border pt-3'>
@@ -65,12 +62,12 @@ export const Showcase = ({ children, title, code }: ShowcaseProps) => {
           onClick={() => setIsCodeModalOpen(false)}
         >
           <div
-            className='relative flex max-h-[85svh] flex-col rounded-md border-2 border-border bg-background/70 p-4 backdrop-blur-md'
+            className='relative flex max-h-[85svh] max-w-[90vw] flex-col rounded-md border-2 border-border bg-background/70 p-4 backdrop-blur-md'
             onClick={(e) => e.stopPropagation()}
           >
             <span className='absolute -top-7 text-muted-foreground'>Click outside to close</span>
 
-            <div className='relative rounded-md bg-slate-900 text-white'>
+            <div className='relative overflow-y-auto rounded-md bg-slate-900 text-white'>
               <div className='absolute right-3 top-2 flex justify-end gap-2'>
                 <Button onClick={onCopy} variant={'outline'}>
                   {copied ? (
@@ -86,8 +83,8 @@ export const Showcase = ({ children, title, code }: ShowcaseProps) => {
                   )}
                 </Button>
               </div>
-              <pre className='overflow-auto text-wrap'>
-                <code className='!bg-transparent'>{code}</code>
+              <pre className='max-h-full'>
+                <code className='!bg-transparent p-2'>{code}</code>
               </pre>
             </div>
           </div>
