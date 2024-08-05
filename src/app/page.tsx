@@ -1,4 +1,5 @@
 import { StatusCard } from '@/components/collection/statusCard';
+import { TagPicker } from '@/components/collection/tagPicker';
 import ToggleTheme from '@/components/collection/toggletheme';
 import { Showcase } from '@/components/showcase';
 import { buttonVariants } from '@/components/ui/button';
@@ -31,7 +32,6 @@ export default function Home() {
         </div>
       </div>
       <div className='mt-5 flex flex-wrap gap-3'>
-        {/* frame and code */}
         <Showcase title='Example' />
         <Showcase title='Theme Toggle' code={getSnippet('toggletheme')}>
           <ToggleTheme />
@@ -43,6 +43,9 @@ export default function Home() {
             status='success'
             description='available'
           />
+        </Showcase>
+        <Showcase title='Tag Picker' code={getSnippet('tagPicker')}>
+          <TagPicker tags={['react', 'typescript', 'tailwindcss']} defaultTags={['react']} />
         </Showcase>
       </div>
     </div>
