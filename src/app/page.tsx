@@ -16,7 +16,7 @@ export default function Home() {
             className={buttonVariants({ variant: 'ghost', className: 'py-1 !text-2xl' })}
             target='_blank'
           >
-            {/* caru-ini */}
+            caru-ini
           </a>
           /
           <a
