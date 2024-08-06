@@ -27,11 +27,11 @@ export default function Home() {
             my-components
           </a>
         </h1>
-        <div>
+        <div className='hidden gap-x-2 sm:flex'>
           <ToggleTheme />
         </div>
       </div>
-      <div className='mt-5 flex flex-wrap gap-3'>
+      <div className='mt-5 grid grid-cols-1 justify-center gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         <Showcase title='Example' />
         <Showcase title='Theme Toggle' code={getSnippet('toggletheme')}>
           <ToggleTheme />
