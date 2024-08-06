@@ -19,20 +19,17 @@ export const TagPicker: React.FC<tagPickerProps> = ({ tags, defaultTags, onChang
     } else {
       setSelectedTags([...selectedTags, tag]);
     }
+    onChange?.(selectedTags);
   };
   return (
     <div className={cn('flex gap-2', className)}>
       {tags.map((tag) => (
-        <button
+        <Tag
           key={tag}
-          className={cn(
-            `rounded-md border border-border px-2 py-1 transition-colors duration-300 hover:bg-primary hover:text-primary-foreground`,
-            selectedTags.includes(tag) ? 'bg-primary text-primary-foreground' : 'bg-background',
-          )}
+          name={tag}
           onClick={() => handleTagClick(tag)}
-        >
-          {tag}
-        </button>
+          checked={selectedTags.includes(tag)}
+        />
       ))}
     </div>
   );
@@ -42,16 +39,18 @@ type tagProps = {
   name: string;
   key: string;
   onClick: () => void;
+  checked?: boolean;
   className?: string;
 };
 
-export const Tag: React.FC<tagProps> = ({ name, key, className, onClick }) => {
+export const Tag: React.FC<tagProps> = ({ name, key, className, onClick, checked }) => {
   return (
     <button
+      type='button'
       key={key}
       className={cn(
-        `rounded-md border border-border px-2 py-1 transition-colors duration-300 hover:bg-primary 
-            hover:text-primary-foreground`,
+        `rounded-md border border-border px-2 py-1 transition-colors duration-300 hover:bg-none`,
+        checked ? 'bg-white text-black' : '',
         className,
       )}
       onClick={onClick}
