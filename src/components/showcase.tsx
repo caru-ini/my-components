@@ -67,7 +67,7 @@ export const Showcase = ({ children, title, code }: ShowcaseProps) => {
           >
             <span className='absolute -top-7 text-muted-foreground'>Click outside to close</span>
 
-            <div className='relative overflow-y-auto rounded-md bg-slate-900 text-white'>
+            <div className='relative overflow-y-auto rounded-md bg-slate-900'>
               <div className='absolute right-3 top-2 flex justify-end gap-2'>
                 <Button onClick={onCopy} variant={'outline'}>
                   {copied ? (
