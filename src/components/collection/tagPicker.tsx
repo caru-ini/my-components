@@ -49,7 +49,7 @@ export const Tag: React.FC<tagProps> = ({ name, key, className, onClick, checked
       type='button'
       key={key}
       className={cn(
-        `rounded-md border border-border px-2 py-1 transition-colors duration-300 hover:bg-none`,
+        `select-none rounded-md border border-border px-2 py-1 transition-colors duration-300 hover:bg-none`,
         checked ? 'bg-white text-black' : '',
         className,
       )}
