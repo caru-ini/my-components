@@ -32,8 +32,8 @@ export const Showcase = ({ children, title, code }: ShowcaseProps) => {
   return (
     <div className='flex flex-col justify-center gap-2 rounded-md border border-border p-2'>
       <h2 className='px-2 text-xl font-semibold'>{title || 'Title'}</h2>
-      <div className='p-3 pt-0'>
-        <div className='flex min-h-36 min-w-60 items-center justify-center'>
+      <div className='flex items-center justify-center'>
+        <div className='flex min-h-36 items-center overflow-x-auto'>
           {children ?? <p className='text-gray-500'>Component Here</p>}
         </div>
       </div>
