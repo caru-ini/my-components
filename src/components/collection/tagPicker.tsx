@@ -50,7 +50,7 @@ export const Tag: React.FC<tagProps> = ({ name, key, className, onClick, checked
       key={key}
       className={cn(
         `select-none rounded-md border border-border px-2 py-1 transition-colors duration-300 hover:bg-none`,
-        checked ? 'bg-white text-black' : '',
+        checked ? 'bg-primary text-primary-foreground' : '',
         className,
       )}
       onClick={onClick}
