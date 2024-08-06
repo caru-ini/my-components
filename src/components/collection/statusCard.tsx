@@ -40,7 +40,7 @@ const Indicator: React.FC<{ status: Status }> = ({ status }) => {
     <div>
       <div
         className={cn(
-          `flex size-3 rounded-full items-center justify-center`,
+          `flex size-3 items-center justify-center rounded-full`,
           outerStatusStyles[status],
         )}
       >
