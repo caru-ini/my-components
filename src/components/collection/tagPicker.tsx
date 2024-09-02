@@ -37,17 +37,15 @@ export const TagPicker: React.FC<tagPickerProps> = ({ tags, defaultTags, onChang
 
 type tagProps = {
   name: string;
-  key: string;
   onClick: () => void;
   checked?: boolean;
   className?: string;
 };
 
-export const Tag: React.FC<tagProps> = ({ name, key, className, onClick, checked }) => {
+export const Tag: React.FC<tagProps> = ({ name, className, onClick, checked }) => {
   return (
     <button
       type='button'
-      key={key}
       className={cn(
         `select-none rounded-md border border-border px-2 py-1 transition-colors duration-300 hover:bg-none`,
         checked ? 'bg-primary text-primary-foreground' : '',
