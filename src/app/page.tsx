@@ -8,7 +8,7 @@ import { IceCream } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className='container flex flex-col p-10'>
+    <div className='container flex grow flex-col p-10'>
       <div className='flex justify-between border-b-2 border-border py-2'>
         <h1 className='flex items-center gap-x-2 text-2xl'>
           <a
