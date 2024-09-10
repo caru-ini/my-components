@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja'>
-      <body className={inter.className + ' flex flex-col min-h-svh'}>
+      <body className={inter.className + ' flex flex-col min-h-[200svh]'}>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
           {children}
           <Footer />

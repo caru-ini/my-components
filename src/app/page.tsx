@@ -1,3 +1,4 @@
+import { Kaiwai } from '@/components/collection/kaiwai';
 import { StatusCard } from '@/components/collection/statusCard';
 import { TagPicker } from '@/components/collection/tagPicker';
 import ToggleTheme from '@/components/collection/toggletheme';
@@ -46,6 +47,9 @@ export default function Home() {
         </Showcase>
         <Showcase title='Tag Picker' code={getSnippet('tagPicker')}>
           <TagPicker tags={['react', 'typescript', 'tailwindcss']} defaultTags={['react']} />
+        </Showcase>
+        <Showcase title='界隈曲のアレ' code={getSnippet('kaiwai')}>
+          <Kaiwai />
         </Showcase>
       </div>
     </div>
