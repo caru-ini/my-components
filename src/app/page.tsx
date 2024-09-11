@@ -1,4 +1,5 @@
 import { Kaiwai } from '@/components/collection/kaiwai';
+import { Logo } from '@/components/collection/logo';
 import { StatusCard } from '@/components/collection/statusCard';
 import { TagPicker } from '@/components/collection/tagPicker';
 import ToggleTheme from '@/components/collection/toggletheme';
@@ -33,7 +34,9 @@ export default function Home() {
         </div>
       </div>
       <div className='mt-5 grid grid-cols-1 justify-center gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-        <Showcase title='Example' />
+        <Showcase title='Example' code={getSnippet('logo')}>
+          <Logo />
+        </Showcase>
         <Showcase title='Theme Toggle' code={getSnippet('toggletheme')}>
           <ToggleTheme />
         </Showcase>
