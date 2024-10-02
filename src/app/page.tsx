@@ -1,3 +1,4 @@
+import { DatePicker } from '@/components/collection/datePicker';
 import { Kaiwai } from '@/components/collection/kaiwai';
 import { Logo } from '@/components/collection/logo';
 import { StatusCard } from '@/components/collection/statusCard';
@@ -53,6 +54,9 @@ export default function Home() {
         </Showcase>
         <Showcase title='界隈曲のアレ' code={getSnippet('kaiwai')}>
           <Kaiwai />
+        </Showcase>
+        <Showcase title='Date Picker' code={getSnippet('datePicker')}>
+          <DatePicker />
         </Showcase>
       </div>
     </div>
