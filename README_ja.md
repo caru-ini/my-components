@@ -24,9 +24,9 @@
 こんな感じ
 
 ```tsx
-  <Showcase title='Theme Toggle' code={getSnippet('toggletheme')}>
-    <ToggleTheme />
-  </Showcase>
+<Showcase title='Theme Toggle' code={getSnippet('toggletheme')}>
+  <ToggleTheme />
+</Showcase>
 ```
 
 3. `npm run dev`でローカルサーバーを立ち上げる

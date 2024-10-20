@@ -4,6 +4,7 @@ import { Logo } from '@/components/collection/logo';
 import { StatusCard } from '@/components/collection/statusCard';
 import { TagPicker } from '@/components/collection/tagPicker';
 import ToggleTheme from '@/components/collection/toggletheme';
+import { UserMenu } from '@/components/collection/user-menu';
 import { Showcase } from '@/components/showcase';
 import { buttonVariants } from '@/components/ui/button';
 import { getSnippet } from '@/lib/getCodeSnippet';
@@ -57,6 +58,9 @@ export default function Home() {
         </Showcase>
         <Showcase title='Date Picker' code={getSnippet('datePicker')}>
           <DatePicker />
+        </Showcase>
+        <Showcase title='User Menu' code={getSnippet('userMenu')}>
+          <UserMenu />
         </Showcase>
       </div>
     </div>

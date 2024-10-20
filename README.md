@@ -23,9 +23,9 @@ To use them, it is necessary to add the components from `shadcn/ui` beforehand.
 Here's an example:
 
 ```tsx
-  <Showcase title='Theme Toggle' code={getSnippet('toggletheme')}>
-    <ToggleTheme />
-  </Showcase>
+<Showcase title='Theme Toggle' code={getSnippet('toggletheme')}>
+  <ToggleTheme />
+</Showcase>
 ```
 
 3. Launch a local server with `npm run dev`.
